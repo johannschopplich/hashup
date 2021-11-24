@@ -13,12 +13,18 @@ export const hashedFilenameRE = /([.-])(\w{8})\.(\w+)$/;
 
 export type CliOptions = {
   assetsDir: string;
+  extensions: Array<string>;
 };
 
 export async function generate(options: CliOptions) {
-  const assetFiles = await glob(`${options.assetsDir}/{css,js}/**/*.{css,js}`);
-  let hashedFiles = 0;
+  const { assetsDir, extensions } = options;
+  const assetFiles = await glob(
+    `${options.assetsDir}/{${extensions.join(",")}}/**/*.{${extensions.join(
+      ","
+    )}}`
+  );
 
+  let hashedFiles = 0;
   const manifest = Object.create(null);
 
   for (const filePath of assetFiles) {
@@ -60,6 +66,11 @@ export async function generate(options: CliOptions) {
 export async function build(options: CliOptions) {
   consola.log(green(`${name} v${version}`));
   consola.start("hashing build assets...");
+  consola.info(
+    `included file extensions: ${options.extensions
+      .map((i) => cyan(i))
+      .join(", ")}`
+  );
 
   await generate(options);
 }

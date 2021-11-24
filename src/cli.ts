@@ -6,12 +6,17 @@ import { handleError } from "./errors";
 async function main() {
   const cli = cac(name);
 
-  cli.command("[dir]", "Assets dir").action(async (dir: string, flags) => {
-    await build({
-      ...flags,
-      assetsDir: dir ?? assetsDir,
+  cli
+    .command("[dir]", "Assets directory")
+    .option("-e, --ext <extension>", "Specify file extensions", {
+      default: ["css", "js"],
+    })
+    .action(async (dir: string, flags) => {
+      await build({
+        assetsDir: dir ?? assetsDir,
+        extensions: flags.ext,
+      });
     });
-  });
 
   cli.help();
 
