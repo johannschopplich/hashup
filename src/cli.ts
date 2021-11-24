@@ -2,6 +2,7 @@ import { cac } from "cac";
 import { name, version } from "../package.json";
 import { build, assetsDir } from "./index";
 import { handleError } from "./errors";
+import { arraify } from "./utils";
 
 async function main() {
   const cli = cac(name);
@@ -12,9 +13,10 @@ async function main() {
       default: ["css", "js"],
     })
     .action(async (dir: string, flags) => {
+      console.log(flags.ext);
       await build({
         assetsDir: dir ?? assetsDir,
-        extensions: flags.ext || ["css", "js"],
+        extensions: arraify(flags.ext),
       });
     });
 
