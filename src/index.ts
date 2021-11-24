@@ -1,5 +1,4 @@
 import { relative, parse, format } from "pathe";
-import { existsSync } from "fs";
 import { writeFile, rename } from "fs/promises";
 import { getHash } from "./utils";
 import consola from "consola";
@@ -7,14 +6,15 @@ import { cyan, green } from "colorette";
 import { name, version } from "../package.json";
 import glob from "tiny-glob";
 
-export const indexPath = existsSync("public") ? "public/" : "";
-export const assetsDir = `${indexPath}assets`;
 export const hashedFilenameRE = /([.-])(\w{8})\.(\w+)$/;
 
 export type CliOptions = {
   assetsDir: string;
   extensions: Array<string>;
 };
+
+const relativeToAssetsDir = (path: string) =>
+  path.substring(path.lastIndexOf("assets/"));
 
 export async function generate(options: CliOptions) {
   const { assetsDir, extensions } = options;
@@ -27,34 +27,41 @@ export async function generate(options: CliOptions) {
   let hashedFiles = 0;
   const manifest = Object.create(null);
 
-  for (const filePath of assetFiles) {
-    const key = filePath.slice(indexPath.length);
-    const parsedPath = parse(filePath);
+  for (const path of assetFiles) {
+    const parsedPath = parse(path);
+    const key = relativeToAssetsDir(path);
 
     // Make sure file hasn't been hashed already
     if (hashedFilenameRE.test(parsedPath.base)) {
-      consola.info(`skipping ${cyan(filePath)}, seems to be hashed already`);
+      consola.info(
+        `skipping ${cyan(
+          relative(assetsDir, path)
+        )}, seems to be hashed already`
+      );
+
       continue;
     }
 
-    const hash = await getHash(filePath);
+    const hash = await getHash(path);
     const newFilePath = format({
       ...parsedPath,
       base: undefined,
       ext: `.${hash}${parsedPath.ext}`,
     });
 
-    await rename(filePath, newFilePath);
+    await rename(path, newFilePath);
 
-    manifest[key] = newFilePath.slice(indexPath.length);
+    manifest[key] = relativeToAssetsDir(newFilePath);
     hashedFiles++;
   }
 
-  await writeFile(
-    `${assetsDir}/manifest.json`,
-    JSON.stringify(manifest, null, 2),
-    "utf-8"
-  );
+  if (Object.keys(manifest).length) {
+    await writeFile(
+      `${assetsDir}/manifest.json`,
+      JSON.stringify(manifest, null, 2),
+      "utf-8"
+    );
+  }
 
   consola.success(
     `${hashedFiles} asset files hashed in ${cyan(

@@ -1,6 +1,7 @@
 import { cac } from "cac";
+import { resolve } from "pathe";
 import { name, version } from "../package.json";
-import { build, assetsDir } from "./index";
+import { build } from "./index";
 import { handleError } from "./errors";
 import { arraify } from "./utils";
 
@@ -8,13 +9,13 @@ async function main() {
   const cli = cac(name);
 
   cli
-    .command("[dir]", "Assets directory")
+    .command("[path]", 'Path to "assets" directory')
     .option("--ext <extension>", "Specify file extensions", {
       default: ["css", "js"],
     })
-    .action(async (dir: string, flags) => {
+    .action(async (path: string, flags) => {
       await build({
-        assetsDir: dir ?? assetsDir,
+        assetsDir: resolve(process.cwd(), path ?? "assets"),
         extensions: arraify(flags.ext),
       });
     });
