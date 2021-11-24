@@ -14,7 +14,7 @@ async function main() {
     .action(async (dir: string, flags) => {
       await build({
         assetsDir: dir ?? assetsDir,
-        extensions: flags.ext ?? ["css", "js"],
+        extensions: flags.ext || ["css", "js"],
       });
     });
 
