@@ -25,7 +25,7 @@
   "exports": "./dist/index.js",
   "main": "./dist/index.js",
   "bin": {
-    "unocss": "./bin/unocss.js"
+    "hashup": "./bin/hashup.js"
   },
   "types": "./dist/index.d.ts",
   "files": [
