@@ -41,7 +41,7 @@ export async function generate(options: CliOptions) {
     manifest[key] = newFilePath.slice(indexPath.length);
   }
 
-  writeFile(
+  await writeFile(
     `${assetsDir}/manifest.json`,
     JSON.stringify(manifest, null, 2),
     "utf-8"
