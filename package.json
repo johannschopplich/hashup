@@ -1,6 +1,6 @@
 {
   "name": "hashup",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "CLI to hash build asset files",
   "keywords": [
     "kirby",
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
+    "bumpp": "^7.1.1",
     "cac": "^6.7.12",
     "colorette": "^2.0.16",
     "consola": "^2.15.3",
