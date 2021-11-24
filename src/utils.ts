@@ -1,8 +1,6 @@
 import { readFile } from "fs/promises";
 import { createHash } from "crypto";
 
-export const hashedFilenameRE = /[.-]\w{8}\.\w+$/;
-
 /**
  * Returns a 8-digit hash for a given file
  */
