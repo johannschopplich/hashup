@@ -19,9 +19,7 @@ const relativeToAssetsDir = (path: string) =>
 export async function generate(options: CliOptions) {
   const { assetsDir, extensions } = options;
   const assetFiles = await glob(
-    `${options.assetsDir}/{${extensions.join(",")}}/**/*.{${extensions.join(
-      ","
-    )}}`
+    `${assetsDir}/{${extensions.join(",")}}/**/*.{${extensions.join(",")}}`
   );
 
   let hashedFiles = 0;
