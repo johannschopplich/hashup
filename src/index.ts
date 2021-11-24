@@ -9,7 +9,7 @@ import glob from "tiny-glob";
 
 export const indexPath = existsSync("public") ? "public/" : "";
 export const assetsDir = `${indexPath}assets`;
-export const hashedFilenameRE = /([.-]\w{8})\.(\w+)$/;
+export const hashedFilenameRE = /([.-])(\w{8})\.(\w+)$/;
 
 export type CliOptions = {
   assetsDir: string;
@@ -17,6 +17,8 @@ export type CliOptions = {
 
 export async function generate(options: CliOptions) {
   const assetFiles = await glob(`${options.assetsDir}/{css,js}/**/*.{css,js}`);
+  let hashedFiles = 0;
+
   const manifest = Object.create(null);
 
   for (const filePath of assetFiles) {
@@ -39,6 +41,7 @@ export async function generate(options: CliOptions) {
     await rename(filePath, newFilePath);
 
     manifest[key] = newFilePath.slice(indexPath.length);
+    hashedFiles++;
   }
 
   await writeFile(
@@ -48,7 +51,7 @@ export async function generate(options: CliOptions) {
   );
 
   consola.success(
-    `${assetFiles.length} asset files hashed in ${cyan(
+    `${hashedFiles} asset files hashed in ${cyan(
       relative(process.cwd(), assetsDir)
     )}\n`
   );
