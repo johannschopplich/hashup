@@ -1,6 +1,6 @@
 {
   "name": "hashup",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "CLI to hash build asset files",
   "keywords": [
     "kirby",
