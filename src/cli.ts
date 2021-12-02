@@ -1,5 +1,5 @@
 import { cac } from "cac";
-import { resolve } from "pathe";
+import { resolve } from "path";
 import { name, version } from "../package.json";
 import { build } from "./index";
 import { handleError } from "./errors";

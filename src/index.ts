@@ -1,4 +1,4 @@
-import { relative, parse, format } from "pathe";
+import { relative, parse, format } from "path";
 import { writeFile, rename } from "fs/promises";
 import { getHash } from "./utils";
 import consola from "consola";
