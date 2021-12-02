@@ -22,12 +22,19 @@
     "email": "pkg@johannschopplich.com",
     "url": "https://johannschopplich.com"
   },
-  "exports": "./dist/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "bin": {
     "hashup": "./bin/hashup.cjs"
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "bin",
     "dist"
