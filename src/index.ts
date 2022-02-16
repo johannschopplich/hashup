@@ -2,7 +2,7 @@ import { relative, parse, format } from "path";
 import { writeFile, rename } from "fs/promises";
 import { getHash } from "./utils";
 import consola from "consola";
-import { cyan, green } from "colorette";
+import { cyan, green } from "picocolors";
 import { name, version } from "../package.json";
 import glob from "tiny-glob";
 
