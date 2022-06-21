@@ -17,7 +17,7 @@ npm i hashup -D
 
 Add hashup to your build pipeline by adding it your `package.json` scripts (recommended), for example:
 
-```js
+```json
 {
   "scripts": {
     "clean": "rm -rf public/assets/{css,js}",
@@ -40,4 +40,4 @@ Read on here: [Automatic hashing with `manifest.json`](https://github.com/johann
 
 ## License
 
-[MIT](./LICENSE) License © 2021 [Johann Schopplich](https://github.com/johannschopplich)
+[MIT](./LICENSE) License © 2021-2022 [Johann Schopplich](https://github.com/johannschopplich)
