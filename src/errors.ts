@@ -1,9 +1,8 @@
-import consola from "consola";
+import consola from 'consola'
 
 export function handleError(error: unknown) {
-  if (error instanceof Error) {
-    consola.error(error.message);
-  }
+  if (error instanceof Error)
+    consola.error(error.message)
 
-  process.exitCode = 1;
+  process.exitCode = 1
 }
