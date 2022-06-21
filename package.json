@@ -1,37 +1,39 @@
 {
   "name": "hashup",
   "version": "0.3.2",
+  "packageManager": "pnpm@7.3.0",
   "description": "CLI to hash build asset files",
+  "author": {
+    "name": "Johann Schopplich",
+    "email": "pkg@johannschopplich.com",
+    "url": "https://johannschopplich.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/johannschopplich/hashup#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johannschopplich/hashup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/johannschopplich/hashup/issues"
+  },
   "keywords": [
     "kirby",
     "hash",
     "assets",
     "bundle"
   ],
-  "homepage": "https://github.com/johannschopplich/hashup#readme",
-  "bugs": {
-    "url": "https://github.com/johannschopplich/hashup/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johannschopplich/hashup.git"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Johann Schopplich",
-    "email": "pkg@johannschopplich.com",
-    "url": "https://johannschopplich.com"
-  },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs"
     }
   },
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "hashup": "./bin/hashup.cjs"
+    "hashup": "./bin/hashup.mjs"
   },
   "files": [
     "bin",
@@ -40,19 +42,20 @@
   "scripts": {
     "build": "unbuild",
     "stub": "unbuild --stub",
-    "release": "bumpp package.json --commit --push --tag"
-  },
-  "engines": {
-    "node": ">=14"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
-    "@types/node": "^17.0.18",
-    "bumpp": "^7.1.1",
+    "@antfu/eslint-config": "^0.25.1",
+    "@types/node": "^18.0.0",
+    "bumpp": "^8.2.1",
     "cac": "^6.7.12",
     "consola": "^2.15.3",
+    "eslint": "^8.17.0",
     "picocolors": "^1.0.0",
     "tiny-glob": "^0.2.9",
-    "typescript": "^4.5.5",
-    "unbuild": "^0.6.9"
+    "typescript": "^4.7.4",
+    "unbuild": "^0.7.4"
   }
 }
