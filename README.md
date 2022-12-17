@@ -9,8 +9,20 @@
 
 ## Installation
 
+If you want to use hashup right away, there is no need to install it. Simply call it with `npx`:
+
 ```bash
-npm i hashup -D
+npx -y hashup
+```
+
+Otherwise, add it to your development dependencies with either `npm`, `pnpm` or your package manager of choice:
+
+```bash
+# pnpm
+pnpm add -D nuxt-kql
+
+# npm
+npm i -D nuxt-kql
 ```
 
 ## Usage
