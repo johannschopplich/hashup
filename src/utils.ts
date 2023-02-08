@@ -1,9 +1,5 @@
-import { readFile } from 'fs/promises'
-import { createHash } from 'crypto'
-
-export function arraify<T>(target: T | T[]): T[] {
-  return Array.isArray(target) ? target : [target]
-}
+import { readFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 
 /**
  * Returns a 8-digit hash for a given file

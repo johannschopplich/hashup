@@ -1,5 +1,5 @@
-import { format, parse, relative } from 'path'
-import { rename, writeFile } from 'fs/promises'
+import { format, parse, relative } from 'node:path'
+import { rename, writeFile } from 'node:fs/promises'
 import consola from 'consola'
 import { cyan, green } from 'picocolors'
 import glob from 'tiny-glob'

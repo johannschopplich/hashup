@@ -1,6 +1,6 @@
 # hashup
 
-> ℹ️ Mainly to use in conjunciton with [kirby-hashed-assets](https://github.com/johannschopplich/kirby-hashed-assets).
+> ℹ️ Mainly to use in conjunction with [kirby-hashed-assets](https://github.com/johannschopplich/kirby-hashed-assets).
 
 `hashup` is a tiny CLI tool with two objectives in mind for your freshly built frontend assets:
 
@@ -19,10 +19,10 @@ Otherwise, add it to your development dependencies with either `npm`, `pnpm` or 
 
 ```bash
 # pnpm
-pnpm add -D nuxt-kql
+pnpm add -D hashup
 
 # npm
-npm i -D nuxt-kql
+npm i -D hashup
 ```
 
 ## Usage
@@ -52,4 +52,4 @@ Read on here: [Automatic hashing with `manifest.json`](https://github.com/johann
 
 ## License
 
-[MIT](./LICENSE) License © 2021-2022 [Johann Schopplich](https://github.com/johannschopplich)
+[MIT](./LICENSE) License © 2021-2023 [Johann Schopplich](https://github.com/johannschopplich)

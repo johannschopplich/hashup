@@ -1,8 +1,7 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { cac } from 'cac'
 import { name, version } from '../package.json'
 import { handleError } from './errors'
-import { arraify } from './utils'
 import { build } from './index'
 
 async function main() {
@@ -16,7 +15,7 @@ async function main() {
     .action(async (path: string, flags) => {
       await build({
         assetsDir: resolve(process.cwd(), path ?? 'assets'),
-        extensions: arraify(flags.ext),
+        extensions: Array.isArray(flags.ext) ? flags.ext : [flags.ext],
       })
     })
 
