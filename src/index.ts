@@ -13,9 +13,6 @@ export interface CliOptions {
   extensions: Array<string>
 }
 
-const relativeToAssetsDir = (path: string) =>
-  path.substring(path.lastIndexOf('assets/'))
-
 export async function generate(options: CliOptions) {
   const { assetsDir, extensions } = options
   const assetFiles = await glob(
@@ -78,4 +75,8 @@ export async function build(options: CliOptions) {
   )
 
   await generate(options)
+}
+
+function relativeToAssetsDir(path: string) {
+  return path.substring(path.lastIndexOf('assets/'))
 }
