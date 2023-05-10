@@ -1,6 +1,6 @@
-import { format, parse, relative } from 'node:path'
+import { format, join, parse, relative } from 'node:path'
 import { rename, writeFile } from 'node:fs/promises'
-import consola from 'consola'
+import { consola } from 'consola'
 import { cyan, green } from 'picocolors'
 import glob from 'tiny-glob'
 import { name, version } from '../package.json'
@@ -50,9 +50,9 @@ export async function generate(options: CliOptions) {
     hashedFiles++
   }
 
-  if (Object.keys(manifest).length) {
+  if (hashedFiles > 0) {
     await writeFile(
-      `${assetsDir}/manifest.json`,
+      join(assetsDir, 'manifest.json'),
       JSON.stringify(manifest, null, 2),
       'utf-8',
     )
