@@ -1,7 +1,7 @@
 {
   "name": "hashup",
   "type": "module",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "packageManager": "pnpm@8.15.7",
   "description": "CLI to hash build asset files",
   "author": {
