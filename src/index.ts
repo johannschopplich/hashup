@@ -18,7 +18,7 @@ export async function generate(options: CliOptions) {
   const { assetsDir, extensions } = options
   const extensionPattern = `{${extensions.join(',')}}`
   const assetFiles = await glob(
-    `${assetsDir}/${extensionPattern}/**/*.{${extensions.join(',')}}`,
+    `${assetsDir}/${extensionPattern}/**/*.${extensionPattern}`,
   )
 
   let hashedFiles = 0
