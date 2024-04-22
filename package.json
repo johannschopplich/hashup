@@ -2,7 +2,7 @@
   "name": "hashup",
   "type": "module",
   "version": "0.4.5",
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@9.0.5",
   "description": "CLI to hash build asset files",
   "author": {
     "name": "Johann Schopplich",
