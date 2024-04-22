@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { resolve } from 'node:path'
 import { cac } from 'cac'
 import { name, version } from '../package.json'

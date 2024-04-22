@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { format, join, parse, relative } from 'node:path'
 import { rename, writeFile } from 'node:fs/promises'
 import { consola } from 'consola'
@@ -6,7 +7,7 @@ import glob from 'tiny-glob'
 import { name, version } from '../package.json'
 import { getHash } from './utils'
 
-export const hashedFilenameRE = /([.-])(\w{8})\.(\w+)$/
+export const RE_HASHED_FILENAME = /([.-])(\w{8})\.(\w+)$/
 
 export interface CliOptions {
   assetsDir: string
@@ -15,8 +16,9 @@ export interface CliOptions {
 
 export async function generate(options: CliOptions) {
   const { assetsDir, extensions } = options
+  const extensionPattern = `{${extensions.join(',')}}`
   const assetFiles = await glob(
-    `${assetsDir}/{${extensions.join(',')}}/**/*.{${extensions.join(',')}}`,
+    `${assetsDir}/${extensionPattern}/**/*.{${extensions.join(',')}}`,
   )
 
   let hashedFiles = 0
@@ -27,7 +29,7 @@ export async function generate(options: CliOptions) {
     const key = relativeToAssetsDir(path)
 
     // Make sure file hasn't been hashed already
-    if (hashedFilenameRE.test(parsedPath.base)) {
+    if (RE_HASHED_FILENAME.test(parsedPath.base)) {
       consola.info(
         `skipping ${cyan(
           relative(assetsDir, path),
