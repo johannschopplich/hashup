@@ -3,7 +3,7 @@ import { format, join, parse, relative } from 'node:path'
 import process from 'node:process'
 import { consola } from 'consola'
 import { cyan, green } from 'picocolors'
-import glob from 'tiny-glob'
+import { glob } from 'tinyglobby'
 import { name, version } from '../package.json'
 import { getHash } from './utils'
 

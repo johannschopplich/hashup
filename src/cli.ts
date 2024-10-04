@@ -15,7 +15,7 @@ async function main() {
     })
     .action(async (path: string, flags) => {
       await build({
-        assetsDir: resolve(process.cwd(), path ?? 'assets'),
+        assetsDir: resolve(process.cwd(), path || 'assets'),
         extensions: Array.isArray(flags.ext) ? flags.ext : [flags.ext],
       })
     })
