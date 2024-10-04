@@ -2,7 +2,7 @@
   "name": "hashup",
   "type": "module",
   "version": "0.4.6",
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.12.0",
   "description": "CLI to hash build asset files",
   "author": {
     "name": "Johann Schopplich",
@@ -48,15 +48,15 @@
     "release": "bumpp"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.15.0",
-    "@types/node": "^20.12.7",
-    "bumpp": "^9.4.0",
+    "@antfu/eslint-config": "^3.7.3",
+    "@types/node": "^20.16.10",
+    "bumpp": "^9.6.1",
     "cac": "^6.7.14",
     "consola": "^3.2.3",
-    "eslint": "^8.57.0",
-    "picocolors": "^1.0.0",
+    "eslint": "^9.11.1",
+    "picocolors": "^1.1.0",
     "tiny-glob": "^0.2.9",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.4",
     "unbuild": "^2.0.0"
   }
 }

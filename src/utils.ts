@@ -1,5 +1,5 @@
-import { readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
+import { readFile } from 'node:fs/promises'
 
 /**
  * Returns a 8-digit hash for a given file

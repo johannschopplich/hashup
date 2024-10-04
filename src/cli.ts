@@ -1,5 +1,5 @@
-import process from 'node:process'
 import { resolve } from 'node:path'
+import process from 'node:process'
 import { cac } from 'cac'
 import { name, version } from '../package.json'
 import { handleError } from './errors'

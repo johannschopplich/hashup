@@ -1,6 +1,6 @@
-import process from 'node:process'
-import { format, join, parse, relative } from 'node:path'
 import { rename, writeFile } from 'node:fs/promises'
+import { format, join, parse, relative } from 'node:path'
+import process from 'node:process'
 import { consola } from 'consola'
 import { cyan, green } from 'picocolors'
 import glob from 'tiny-glob'
